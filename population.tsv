@@ -1,0 +1,3 @@
+elite_id	tag	commit	val_bpb	memory_gb	params_m	role	parent1	parent2	description
+0	elite/0	fa33567	0.978785	58.8	68.2	best	elite/1	elite/0	depth=11, model_dim=512, ULR=0.016, TOTAL=2**18, WARMDOWN=0.7, WD=0.15, ve_gate_channels=128, short_window=128
+1	elite/1	a9e3b96	0.997811	44.0	50.3	diverse	-	-	baseline
