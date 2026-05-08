@@ -87,6 +87,15 @@ c3d4e5f	1.005000	44.0	discard	switch to GeLU activation
 d4e5f6g	0.000000	0.0	crash	double model width (OOM)
 ```
 
+## Committing artifacts
+
+Everything the run produces must end up in git. Nothing is allowed to stay untracked. This applies to: `run.log` and `results.tsv`.
+
+Concretely:
+
+- After every experiment step, stage and commit all artifacts produced by that step (see step 8 in the experiment loop).
+- If `git status` ever shows untracked or modified files under the artifact paths above, commit them before moving on.
+
 ## The experiment loop
 
 The experiment runs on a dedicated branch (e.g. `autoresearch/mar5` or `autoresearch/mar5-gpu0`).
@@ -99,9 +108,12 @@ LOOP FOREVER:
 4. Run the experiment: `uv run train.py > run.log 2>&1` (redirect everything — do NOT use tee or let output flood your context)
 5. Read out the results: `grep "^val_bpb:\|^peak_vram_mb:" run.log`
 6. If the grep output is empty, the run crashed. Run `tail -n 50 run.log` to read the Python stack trace and attempt a fix. If you can't get things to work after more than a few attempts, give up.
-7. Record the results in the tsv (NOTE: do not commit the results.tsv file, leave it untracked by git)
-8. If val_bpb improved (lower), you "advance" the branch, keeping the git commit
-9. If val_bpb is equal or worse, you git reset back to where you started
+7. Record the results in the tsv.
+8. Commit all artifacts produced by this step:
+   - `git add run.log results.tsv`
+   - `git commit -m "exp: <short description> artifacts"` (skip if `git status` shows nothing staged)
+9. If val_bpb improved (lower), you "advance" the branch, keeping the git commit
+10. If val_bpb is equal or worse, you git reset back to where you started
 
 The idea is that you are a completely autonomous researcher trying things out. If they work, keep. If they don't, discard. And you're advancing the branch so that you can iterate. If you feel like you're getting stuck in some way, you can rewind but you should probably do this very very sparingly (if ever).
 
