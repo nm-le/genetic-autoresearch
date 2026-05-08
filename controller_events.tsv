@@ -1,0 +1,103 @@
+step	event	detail	controller_sha
+1	init	run_tag=, population_size=4	b233d7b98f69
+2	promote	exp0001 -> elite/0: baseline frontier	b233d7b98f69
+3	promote	exp0002 -> elite/1: frontier not full	b233d7b98f69
+4	promote	exp0003 -> elite/2: frontier not full	b233d7b98f69
+5	promote	exp0004 -> elite/3: frontier not full	b233d7b98f69
+6	promote	exp0005 -> elite/0: strictly stronger than weakest elite	b233d7b98f69
+7	discard	exp0006: did not clear promotion thresholds	b233d7b98f69
+8	discard	exp0007: did not clear promotion thresholds	b233d7b98f69
+9	discard	exp0008: did not clear promotion thresholds	b233d7b98f69
+10	discard	exp0009: did not clear promotion thresholds	b233d7b98f69
+11	discard	exp0010: did not clear promotion thresholds	b233d7b98f69
+12	discard	exp0011: did not clear promotion thresholds	b233d7b98f69
+13	discard	exp0012: did not clear promotion thresholds	b233d7b98f69
+14	discard	exp0013: did not clear promotion thresholds	b233d7b98f69
+15	discard	exp0014: did not clear promotion thresholds	b233d7b98f69
+16	discard	exp0015: did not clear promotion thresholds	b233d7b98f69
+17	discard	exp0016: did not clear promotion thresholds	b233d7b98f69
+18	discard	exp0017: did not clear promotion thresholds	b233d7b98f69
+19	discard	exp0018: did not clear promotion thresholds	b233d7b98f69
+20	discard	exp0019: did not clear promotion thresholds	b233d7b98f69
+21	promote	exp0020 -> elite/0: new global best	b233d7b98f69
+22	promote	exp0021 -> elite/0: new global best	b233d7b98f69
+23	promote	exp0022 -> elite/2: improved parent slot	b233d7b98f69
+24	promote	exp0023 -> elite/1: improved parent slot	b233d7b98f69
+25	promote	exp0024 -> elite/3: strictly stronger than weakest elite	b233d7b98f69
+26	promote	exp0025 -> elite/3: improved parent slot	b233d7b98f69
+27	discard	exp0026: did not clear promotion thresholds	b233d7b98f69
+28	promote	exp0027 -> elite/1: improved parent slot	b233d7b98f69
+29	promote	exp0028 -> elite/0: new global best	b233d7b98f69
+30	promote	exp0029 -> elite/2: improved parent slot	b233d7b98f69
+31	promote	exp0030 -> elite/0: new global best	b233d7b98f69
+32	promote	exp0031 -> elite/3: improved parent slot	b233d7b98f69
+33	promote	exp0032 -> elite/0: new global best	b233d7b98f69
+34	promote	exp0033 -> elite/1: improved parent slot	b233d7b98f69
+35	promote	exp0034 -> elite/0: new global best	b233d7b98f69
+36	promote	exp0035 -> elite/2: improved parent slot	b233d7b98f69
+37	promote	exp0036 -> elite/1: improved parent slot	b233d7b98f69
+38	promote	exp0037 -> elite/3: improved parent slot	b233d7b98f69
+39	discard	exp0038: did not clear promotion thresholds	b233d7b98f69
+40	promote	exp0039 -> elite/1: improved parent slot	b233d7b98f69
+41	discard	exp0040: crash	b233d7b98f69
+42	promote	exp0041 -> elite/2: improved parent slot	b233d7b98f69
+43	promote	exp0042 -> elite/0: new global best	b233d7b98f69
+44	discard	exp0043: did not clear promotion thresholds	b233d7b98f69
+45	promote	exp0044 -> elite/2: improved parent slot	b233d7b98f69
+46	discard	exp0045: did not clear promotion thresholds	b233d7b98f69
+47	promote	exp0046 -> elite/1: improved parent slot	b233d7b98f69
+48	promote	exp0047 -> elite/2: improved parent slot	b233d7b98f69
+49	discard	exp0048: did not clear promotion thresholds	b233d7b98f69
+50	promote	exp0049 -> elite/3: keeps a materially different elite alive	b233d7b98f69
+51	promote	exp0050 -> elite/3: keeps a materially different elite alive	b233d7b98f69
+52	discard	exp0051: did not clear promotion thresholds	b233d7b98f69
+53	promote	exp0052 -> elite/3: keeps a materially different elite alive	b233d7b98f69
+54	discard	exp0053: crash	b233d7b98f69
+55	promote	exp0054 -> elite/3: improved parent slot	b233d7b98f69
+56	discard	exp0055: did not clear promotion thresholds	b233d7b98f69
+57	discard	exp0056: did not clear promotion thresholds	b233d7b98f69
+58	discard	exp0057: did not clear promotion thresholds	b233d7b98f69
+59	discard	exp0058: did not clear promotion thresholds	b233d7b98f69
+60	promote	exp0059 -> elite/2: new global best	b233d7b98f69
+61	promote	exp0060 -> elite/3: improved parent slot	b233d7b98f69
+62	promote	exp0061 -> elite/1: improved parent slot	b233d7b98f69
+63	promote	exp0062 -> elite/0: strictly stronger than weakest elite	b233d7b98f69
+64	promote	exp0063 -> elite/3: improved parent slot	b233d7b98f69
+65	promote	exp0064 -> elite/3: strictly stronger than weakest elite	b233d7b98f69
+66	discard	exp0065: did not clear promotion thresholds	b233d7b98f69
+67	discard	exp0066: did not clear promotion thresholds	b233d7b98f69
+68	discard	exp0067: did not clear promotion thresholds	b233d7b98f69
+69	discard	exp0068: did not clear promotion thresholds	b233d7b98f69
+70	discard	exp0069: did not clear promotion thresholds	b233d7b98f69
+71	discard	exp0070: did not clear promotion thresholds	b233d7b98f69
+72	promote	exp0071 -> elite/2: new global best	b233d7b98f69
+73	promote	exp0072 -> elite/2: new global best	b233d7b98f69
+74	discard	exp0073: did not clear promotion thresholds	b233d7b98f69
+75	discard	exp0074: did not clear promotion thresholds	b233d7b98f69
+76	promote	exp0075 -> elite/1: keeps a materially different elite alive	b233d7b98f69
+77	discard	exp0076: did not clear promotion thresholds	b233d7b98f69
+78	promote	exp0077 -> elite/1: improved parent slot	b233d7b98f69
+79	promote	exp0078 -> elite/0: improved parent slot	b233d7b98f69
+80	promote	exp0079 -> elite/3: strictly stronger than weakest elite	b233d7b98f69
+81	promote	exp0080 -> elite/1: keeps a materially different elite alive	b233d7b98f69
+82	discard	exp0081: did not clear promotion thresholds	b233d7b98f69
+83	promote	exp0082 -> elite/1: improved parent slot	b233d7b98f69
+84	discard	exp0083: did not clear promotion thresholds	b233d7b98f69
+85	promote	exp0084 -> elite/0: improved parent slot	b233d7b98f69
+86	discard	exp0085: did not clear promotion thresholds	b233d7b98f69
+87	promote	exp0086 -> elite/3: improved parent slot	b233d7b98f69
+88	discard	exp0087: did not clear promotion thresholds	b233d7b98f69
+89	discard	exp0088: did not clear promotion thresholds	b233d7b98f69
+90	promote	exp0089 -> elite/3: improved parent slot	b233d7b98f69
+91	promote	exp0090 -> elite/1: keeps a materially different elite alive	b233d7b98f69
+92	discard	exp0091: did not clear promotion thresholds	b233d7b98f69
+93	discard	exp0092: did not clear promotion thresholds	b233d7b98f69
+94	discard	exp0093: did not clear promotion thresholds	b233d7b98f69
+95	discard	exp0094: did not clear promotion thresholds	b233d7b98f69
+96	discard	exp0095: did not clear promotion thresholds	b233d7b98f69
+97	discard	exp0096: did not clear promotion thresholds	b233d7b98f69
+98	discard	exp0097: did not clear promotion thresholds	b233d7b98f69
+99	discard	exp0098: did not clear promotion thresholds	b233d7b98f69
+100	discard	exp0099: did not clear promotion thresholds	b233d7b98f69
+101	discard	exp0100: did not clear promotion thresholds	b233d7b98f69
+102	discard	exp0101: did not clear promotion thresholds	b233d7b98f69

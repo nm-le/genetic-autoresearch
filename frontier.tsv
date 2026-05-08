@@ -1,0 +1,5 @@
+slot	tag	commit	val_bpb	memory_gb	params_m	role	parent1	parent2	mutation_kind	description	controller_sha	expansions	mean_child_gain	last_used_exp	last_improved_exp
+0	elite/0	1a62f0b	0.979231	66.2	85.9	best	cc4bec2	0f66a14	crossover	x0=0.2 transplant config-equiv to exp0072 best	b233d7b98f69	7	-0.000609	exp0110	exp0084
+1	elite/1	5f1d74c	0.979142	66.2	85.9	lean	1a62f0b	672b15d	crossover	beta2=0.85 onto best (replicate of exp0089)	b233d7b98f69	8	-0.000347	exp0113	exp0090
+2	elite/2	0f66a14	0.979441	66.2	85.9	best	248d085	b4cace6	crossover	x0=0.2 + ve_gate=64 + best base	b233d7b98f69	15	-0.001739	exp0112	exp0072
+3	elite/3	672b15d	0.979663	66.2	85.9	best	688b8b5	-	mutate	Muon beta2 0.95 to 0.85	b233d7b98f69	8	-0.001813	exp0111	exp0089

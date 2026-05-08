@@ -1,0 +1,1067 @@
+{
+  "history": [
+    {
+      "exp_id": "exp0001",
+      "mutation_kind": "baseline",
+      "parent1": "-",
+      "parent2": "-",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.996415"
+    },
+    {
+      "exp_id": "exp0002",
+      "mutation_kind": "mutate",
+      "parent1": "7795aa9",
+      "parent2": "-",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.995664"
+    },
+    {
+      "exp_id": "exp0003",
+      "mutation_kind": "crossover",
+      "parent1": "a546b54",
+      "parent2": "7795aa9",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.995706"
+    },
+    {
+      "exp_id": "exp0004",
+      "mutation_kind": "mutate",
+      "parent1": "0c70db6",
+      "parent2": "-",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.995707"
+    },
+    {
+      "exp_id": "exp0005",
+      "mutation_kind": "crossover",
+      "parent1": "a546b54",
+      "parent2": "0c70db6",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.995644"
+    },
+    {
+      "exp_id": "exp0006",
+      "mutation_kind": "mutate",
+      "parent1": "c50e49f",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.997789"
+    },
+    {
+      "exp_id": "exp0007",
+      "mutation_kind": "crossover",
+      "parent1": "0c70db6",
+      "parent2": "a546b54",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.995925"
+    },
+    {
+      "exp_id": "exp0008",
+      "mutation_kind": "mutate",
+      "parent1": "c256980",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.996416"
+    },
+    {
+      "exp_id": "exp0009",
+      "mutation_kind": "mutate",
+      "parent1": "c50e49f",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.996877"
+    },
+    {
+      "exp_id": "exp0010",
+      "mutation_kind": "mutate",
+      "parent1": "a546b54",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "1.009323"
+    },
+    {
+      "exp_id": "exp0011",
+      "mutation_kind": "mutate",
+      "parent1": "c256980",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.996867"
+    },
+    {
+      "exp_id": "exp0012",
+      "mutation_kind": "mutate",
+      "parent1": "0c70db6",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.996829"
+    },
+    {
+      "exp_id": "exp0013",
+      "mutation_kind": "crossover",
+      "parent1": "c50e49f",
+      "parent2": "c256980",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.997019"
+    },
+    {
+      "exp_id": "exp0014",
+      "mutation_kind": "mutate",
+      "parent1": "a546b54",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.996140"
+    },
+    {
+      "exp_id": "exp0015",
+      "mutation_kind": "mutate",
+      "parent1": "0c70db6",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.996328"
+    },
+    {
+      "exp_id": "exp0016",
+      "mutation_kind": "mutate",
+      "parent1": "c50e49f",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.996289"
+    },
+    {
+      "exp_id": "exp0017",
+      "mutation_kind": "mutate",
+      "parent1": "a546b54",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.995939"
+    },
+    {
+      "exp_id": "exp0018",
+      "mutation_kind": "crossover",
+      "parent1": "c256980",
+      "parent2": "c50e49f",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.996504"
+    },
+    {
+      "exp_id": "exp0019",
+      "mutation_kind": "mutate",
+      "parent1": "0c70db6",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.997496"
+    },
+    {
+      "exp_id": "exp0020",
+      "mutation_kind": "mutate",
+      "parent1": "a546b54",
+      "parent2": "-",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.990379"
+    },
+    {
+      "exp_id": "exp0021",
+      "mutation_kind": "crossover",
+      "parent1": "c50e49f",
+      "parent2": "2f657a9",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.988036"
+    },
+    {
+      "exp_id": "exp0022",
+      "mutation_kind": "mutate",
+      "parent1": "0c70db6",
+      "parent2": "-",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.989286"
+    },
+    {
+      "exp_id": "exp0023",
+      "mutation_kind": "crossover",
+      "parent1": "a546b54",
+      "parent2": "40e0861",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.990597"
+    },
+    {
+      "exp_id": "exp0024",
+      "mutation_kind": "mutate",
+      "parent1": "e79182c",
+      "parent2": "-",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.988323"
+    },
+    {
+      "exp_id": "exp0025",
+      "mutation_kind": "crossover",
+      "parent1": "a18e5ce",
+      "parent2": "e79182c",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.988051"
+    },
+    {
+      "exp_id": "exp0026",
+      "mutation_kind": "mutate",
+      "parent1": "40e0861",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.994657"
+    },
+    {
+      "exp_id": "exp0027",
+      "mutation_kind": "crossover",
+      "parent1": "0a9f623",
+      "parent2": "e79182c",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.989382"
+    },
+    {
+      "exp_id": "exp0028",
+      "mutation_kind": "mutate",
+      "parent1": "d7a35ad",
+      "parent2": "-",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.987818"
+    },
+    {
+      "exp_id": "exp0029",
+      "mutation_kind": "crossover",
+      "parent1": "40e0861",
+      "parent2": "baf2e66",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.987893"
+    },
+    {
+      "exp_id": "exp0030",
+      "mutation_kind": "mutate",
+      "parent1": "41c1e5a",
+      "parent2": "-",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.987495"
+    },
+    {
+      "exp_id": "exp0031",
+      "mutation_kind": "crossover",
+      "parent1": "d7a35ad",
+      "parent2": "9c2cb69",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.987913"
+    },
+    {
+      "exp_id": "exp0032",
+      "mutation_kind": "mutate",
+      "parent1": "e45ff1a",
+      "parent2": "-",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.987257"
+    },
+    {
+      "exp_id": "exp0033",
+      "mutation_kind": "crossover",
+      "parent1": "41c1e5a",
+      "parent2": "2443d63",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.987406"
+    },
+    {
+      "exp_id": "exp0034",
+      "mutation_kind": "mutate",
+      "parent1": "bc9a56e",
+      "parent2": "-",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.985399"
+    },
+    {
+      "exp_id": "exp0035",
+      "mutation_kind": "crossover",
+      "parent1": "e45ff1a",
+      "parent2": "f58a279",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.986029"
+    },
+    {
+      "exp_id": "exp0036",
+      "mutation_kind": "mutate",
+      "parent1": "612366c",
+      "parent2": "-",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.985768"
+    },
+    {
+      "exp_id": "exp0037",
+      "mutation_kind": "crossover",
+      "parent1": "bc9a56e",
+      "parent2": "9194dc9",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.985413"
+    },
+    {
+      "exp_id": "exp0038",
+      "mutation_kind": "mutate",
+      "parent1": "f58a279",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.986022"
+    },
+    {
+      "exp_id": "exp0039",
+      "mutation_kind": "crossover",
+      "parent1": "d14bb6f",
+      "parent2": "f58a279",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.985562"
+    },
+    {
+      "exp_id": "exp0040",
+      "mutation_kind": "mutate",
+      "parent1": "30b0cc5",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "crash",
+      "val_bpb": "0.000000"
+    },
+    {
+      "exp_id": "exp0041",
+      "mutation_kind": "mutate",
+      "parent1": "9194dc9",
+      "parent2": "-",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.985837"
+    },
+    {
+      "exp_id": "exp0042",
+      "mutation_kind": "crossover",
+      "parent1": "3d0e472",
+      "parent2": "f58a279",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.985189"
+    },
+    {
+      "exp_id": "exp0043",
+      "mutation_kind": "mutate",
+      "parent1": "30b0cc5",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985857"
+    },
+    {
+      "exp_id": "exp0044",
+      "mutation_kind": "crossover",
+      "parent1": "b3b849a",
+      "parent2": "30b0cc5",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.985558"
+    },
+    {
+      "exp_id": "exp0045",
+      "mutation_kind": "mutate",
+      "parent1": "d07e930",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.986822"
+    },
+    {
+      "exp_id": "exp0046",
+      "mutation_kind": "crossover",
+      "parent1": "3d0e472",
+      "parent2": "d07e930",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.985374"
+    },
+    {
+      "exp_id": "exp0047",
+      "mutation_kind": "mutate",
+      "parent1": "49a6e5c",
+      "parent2": "-",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.985170"
+    },
+    {
+      "exp_id": "exp0048",
+      "mutation_kind": "crossover",
+      "parent1": "30b0cc5",
+      "parent2": "af87940",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985859"
+    },
+    {
+      "exp_id": "exp0049",
+      "mutation_kind": "mutate",
+      "parent1": "ce28e55",
+      "parent2": "-",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.985502"
+    },
+    {
+      "exp_id": "exp0050",
+      "mutation_kind": "crossover",
+      "parent1": "d07e930",
+      "parent2": "25ad15f",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.985563"
+    },
+    {
+      "exp_id": "exp0051",
+      "mutation_kind": "mutate",
+      "parent1": "af87940",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.991506"
+    },
+    {
+      "exp_id": "exp0052",
+      "mutation_kind": "crossover",
+      "parent1": "ce28e55",
+      "parent2": "af87940",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.985622"
+    },
+    {
+      "exp_id": "exp0053",
+      "mutation_kind": "mutate",
+      "parent1": "d07e930",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "crash",
+      "val_bpb": "0.000000"
+    },
+    {
+      "exp_id": "exp0054",
+      "mutation_kind": "mutate",
+      "parent1": "c549b71",
+      "parent2": "-",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.985182"
+    },
+    {
+      "exp_id": "exp0055",
+      "mutation_kind": "crossover",
+      "parent1": "ce28e55",
+      "parent2": "af87940",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985500"
+    },
+    {
+      "exp_id": "exp0056",
+      "mutation_kind": "mutate",
+      "parent1": "d07e930",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985257"
+    },
+    {
+      "exp_id": "exp0057",
+      "mutation_kind": "mutate",
+      "parent1": "e67a5b9",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.986790"
+    },
+    {
+      "exp_id": "exp0058",
+      "mutation_kind": "mutate",
+      "parent1": "ce28e55",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.989492"
+    },
+    {
+      "exp_id": "exp0059",
+      "mutation_kind": "mutate",
+      "parent1": "af87940",
+      "parent2": "-",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.984292"
+    },
+    {
+      "exp_id": "exp0060",
+      "mutation_kind": "crossover",
+      "parent1": "e67a5b9",
+      "parent2": "d07e930",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.985064"
+    },
+    {
+      "exp_id": "exp0061",
+      "mutation_kind": "mutate",
+      "parent1": "ce28e55",
+      "parent2": "-",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.984416"
+    },
+    {
+      "exp_id": "exp0062",
+      "mutation_kind": "crossover",
+      "parent1": "6a68006",
+      "parent2": "726ef51",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.984370"
+    },
+    {
+      "exp_id": "exp0063",
+      "mutation_kind": "mutate",
+      "parent1": "726ef51",
+      "parent2": "-",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.984736"
+    },
+    {
+      "exp_id": "exp0064",
+      "mutation_kind": "crossover",
+      "parent1": "4a30faa",
+      "parent2": "6a68006",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.984379"
+    },
+    {
+      "exp_id": "exp0065",
+      "mutation_kind": "mutate",
+      "parent1": "248d085",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984629"
+    },
+    {
+      "exp_id": "exp0066",
+      "mutation_kind": "crossover",
+      "parent1": "af26d3e",
+      "parent2": "6a68006",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984771"
+    },
+    {
+      "exp_id": "exp0067",
+      "mutation_kind": "mutate",
+      "parent1": "4a30faa",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985204"
+    },
+    {
+      "exp_id": "exp0068",
+      "mutation_kind": "mutate",
+      "parent1": "248d085",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984548"
+    },
+    {
+      "exp_id": "exp0069",
+      "mutation_kind": "mutate",
+      "parent1": "af26d3e",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984767"
+    },
+    {
+      "exp_id": "exp0070",
+      "mutation_kind": "mutate",
+      "parent1": "4a30faa",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985957"
+    },
+    {
+      "exp_id": "exp0071",
+      "mutation_kind": "mutate",
+      "parent1": "6a68006",
+      "parent2": "-",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.983411"
+    },
+    {
+      "exp_id": "exp0072",
+      "mutation_kind": "crossover",
+      "parent1": "248d085",
+      "parent2": "b4cace6",
+      "promoted_slot": "elite/2",
+      "status": "ok",
+      "val_bpb": "0.983089"
+    },
+    {
+      "exp_id": "exp0073",
+      "mutation_kind": "mutate",
+      "parent1": "af26d3e",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985216"
+    },
+    {
+      "exp_id": "exp0074",
+      "mutation_kind": "crossover",
+      "parent1": "4a30faa",
+      "parent2": "0f66a14",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984695"
+    },
+    {
+      "exp_id": "exp0075",
+      "mutation_kind": "mutate",
+      "parent1": "248d085",
+      "parent2": "-",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.984492"
+    },
+    {
+      "exp_id": "exp0076",
+      "mutation_kind": "crossover",
+      "parent1": "af26d3e",
+      "parent2": "0f66a14",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985658"
+    },
+    {
+      "exp_id": "exp0077",
+      "mutation_kind": "mutate",
+      "parent1": "a62338a",
+      "parent2": "-",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.983450"
+    },
+    {
+      "exp_id": "exp0078",
+      "mutation_kind": "crossover",
+      "parent1": "248d085",
+      "parent2": "a54e537",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.983173"
+    },
+    {
+      "exp_id": "exp0079",
+      "mutation_kind": "mutate",
+      "parent1": "0f66a14",
+      "parent2": "-",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.983446"
+    },
+    {
+      "exp_id": "exp0080",
+      "mutation_kind": "crossover",
+      "parent1": "8a008ff",
+      "parent2": "0f66a14",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.983329"
+    },
+    {
+      "exp_id": "exp0081",
+      "mutation_kind": "mutate",
+      "parent1": "cc4bec2",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984905"
+    },
+    {
+      "exp_id": "exp0082",
+      "mutation_kind": "crossover",
+      "parent1": "926618c",
+      "parent2": "0f66a14",
+      "promoted_slot": "elite/1",
+      "status": "ok",
+      "val_bpb": "0.983182"
+    },
+    {
+      "exp_id": "exp0083",
+      "mutation_kind": "mutate",
+      "parent1": "8a008ff",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984093"
+    },
+    {
+      "exp_id": "exp0084",
+      "mutation_kind": "crossover",
+      "parent1": "cc4bec2",
+      "parent2": "0f66a14",
+      "promoted_slot": "elite/0",
+      "status": "ok",
+      "val_bpb": "0.983063"
+    },
+    {
+      "exp_id": "exp0085",
+      "mutation_kind": "mutate",
+      "parent1": "6fd09d1",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.983958"
+    },
+    {
+      "exp_id": "exp0086",
+      "mutation_kind": "crossover",
+      "parent1": "8a008ff",
+      "parent2": "1a62f0b",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.981265"
+    },
+    {
+      "exp_id": "exp0087",
+      "mutation_kind": "mutate",
+      "parent1": "0f66a14",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.983897"
+    },
+    {
+      "exp_id": "exp0088",
+      "mutation_kind": "crossover",
+      "parent1": "6fd09d1",
+      "parent2": "0f66a14",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.983595"
+    },
+    {
+      "exp_id": "exp0089",
+      "mutation_kind": "mutate",
+      "parent1": "688b8b5",
+      "parent2": "-",
+      "promoted_slot": "elite/3",
+      "status": "ok",
+      "val_bpb": "0.982996"
+    },
+    {
+      "exp_id": "exp0090",
+      "mutation_kind": "crossover",
+      "parent1": "1a62f0b",
+      "parent2": "672b15d",
+      "promoted_slot": "elite/1",
+      "status": "elite",
+      "val_bpb": "0.979142"
+    },
+    {
+      "exp_id": "exp0091",
+      "mutation_kind": "mutate",
+      "parent1": "0f66a14",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984333"
+    },
+    {
+      "exp_id": "exp0092",
+      "mutation_kind": "crossover",
+      "parent1": "5f1d74c",
+      "parent2": "1a62f0b",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.983448"
+    },
+    {
+      "exp_id": "exp0093",
+      "mutation_kind": "mutate",
+      "parent1": "672b15d",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985301"
+    },
+    {
+      "exp_id": "exp0094",
+      "mutation_kind": "mutate",
+      "parent1": "0f66a14",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985181"
+    },
+    {
+      "exp_id": "exp0095",
+      "mutation_kind": "mutate",
+      "parent1": "5f1d74c",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.983474"
+    },
+    {
+      "exp_id": "exp0096",
+      "mutation_kind": "mutate",
+      "parent1": "672b15d",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.985727"
+    },
+    {
+      "exp_id": "exp0097",
+      "mutation_kind": "mutate",
+      "parent1": "1a62f0b",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984831"
+    },
+    {
+      "exp_id": "exp0098",
+      "mutation_kind": "crossover",
+      "parent1": "5f1d74c",
+      "parent2": "0f66a14",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.983686"
+    },
+    {
+      "exp_id": "exp0099",
+      "mutation_kind": "mutate",
+      "parent1": "672b15d",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.983746"
+    },
+    {
+      "exp_id": "exp0100",
+      "mutation_kind": "mutate",
+      "parent1": "1a62f0b",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984945"
+    },
+    {
+      "exp_id": "exp0101",
+      "mutation_kind": "mutate",
+      "parent1": "5f1d74c",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.984092"
+    },
+    {
+      "exp_id": "exp0102",
+      "mutation_kind": "mutate",
+      "parent1": "672b15d",
+      "parent2": "-",
+      "promoted_slot": "-",
+      "status": "ok",
+      "val_bpb": "0.983775"
+    }
+  ],
+  "next_exp": 103,
+  "operator_history": [
+    "baseline",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate",
+    "crossover",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate",
+    "crossover",
+    "mutate",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "crash",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "crash",
+    "mutate",
+    "crossover",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "crossover",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate",
+    "crossover",
+    "mutate",
+    "mutate",
+    "mutate",
+    "mutate"
+  ],
+  "pair_history": {
+    "0a9f623|e79182c": 1,
+    "0c70db6|a546b54": 2,
+    "0f66a14|4a30faa": 1,
+    "0f66a14|5f1d74c": 1,
+    "0f66a14|6fd09d1": 1,
+    "0f66a14|8a008ff": 1,
+    "0f66a14|926618c": 1,
+    "0f66a14|af26d3e": 1,
+    "0f66a14|cc4bec2": 1,
+    "1a62f0b|5f1d74c": 2,
+    "1a62f0b|672b15d": 1,
+    "1a62f0b|8a008ff": 1,
+    "2443d63|41c1e5a": 1,
+    "248d085|a54e537": 1,
+    "248d085|b4cace6": 1,
+    "25ad15f|d07e930": 1,
+    "2f657a9|c50e49f": 1,
+    "30b0cc5|af87940": 1,
+    "30b0cc5|b3b849a": 1,
+    "3d0e472|d07e930": 1,
+    "3d0e472|f58a279": 1,
+    "40e0861|a546b54": 1,
+    "40e0861|baf2e66": 1,
+    "4a30faa|6a68006": 1,
+    "5f1d74c|672b15d": 1,
+    "6a68006|726ef51": 1,
+    "6a68006|af26d3e": 1,
+    "7795aa9|a546b54": 1,
+    "9194dc9|bc9a56e": 1,
+    "9c2cb69|d7a35ad": 1,
+    "a18e5ce|e79182c": 1,
+    "af87940|ce28e55": 2,
+    "c256980|c50e49f": 2,
+    "d07e930|e67a5b9": 1,
+    "d14bb6f|f58a279": 1,
+    "e45ff1a|f58a279": 1
+  },
+  "population_size": 4,
+  "run_tag": ""
+}
