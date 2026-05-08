@@ -1,0 +1,101 @@
+exp_id	commit	parent1	parent2	val_bpb	memory_gb	params_m	status	mutation_kind	description	controller_sha	promoted_slot
+exp0001	7795aa9	-	-	0.996415	44.0	50.3	elite	baseline	unmodified baseline	b233d7b98f69	elite/0
+exp0002	a546b54	7795aa9	-	0.995664	44.0	50.3	elite	mutate	raise Muon matrix_lr 0.04 to 0.05	b233d7b98f69	elite/1
+exp0003	0c70db6	a546b54	7795aa9	0.995706	44.0	50.3	elite	crossover	matrix_lr blend 0.045 between elite/0 and elite/1	b233d7b98f69	elite/2
+exp0004	c50e49f	0c70db6	-	0.995707	44.0	50.3	elite	mutate	add LR warmup ratio 0.05	b233d7b98f69	elite/3
+exp0005	c256980	a546b54	0c70db6	0.995644	44.0	50.3	elite	crossover	matrix_lr blend 0.0475 from elite/1 and elite/2	b233d7b98f69	elite/0
+exp0006	91aa160	c50e49f	-	0.997789	44.0	50.3	ok	mutate	shorten WARMDOWN_RATIO 0.5 to 0.3	b233d7b98f69	-
+exp0007	9b1485b	0c70db6	a546b54	0.995925	44.0	50.3	ok	crossover	matrix_lr 0.055 extrapolation from elite/1 raise idea	b233d7b98f69	-
+exp0008	9fd7730	c256980	-	0.996416	44.0	50.3	ok	mutate	ADAM_BETAS beta1 0.8 to 0.9	b233d7b98f69	-
+exp0009	a6365ce	c50e49f	-	0.996877	44.0	50.3	ok	mutate	WEIGHT_DECAY 0.2 to 0.1	b233d7b98f69	-
+exp0010	5e67311	a546b54	-	1.009323	60.5	80.9	ok	mutate	DEPTH 8 to 9	b233d7b98f69	-
+exp0011	7fdf533	c256980	-	0.996867	44.0	50.3	ok	mutate	Muon final momentum 0.95 to 0.97	b233d7b98f69	-
+exp0012	b9b490e	0c70db6	-	0.996829	44.0	50.3	ok	mutate	EMBEDDING_LR 0.6 to 0.8	b233d7b98f69	-
+exp0013	f2d18bb	c50e49f	c256980	0.997019	44.0	50.3	ok	crossover	warmup=0.05 from elite/3 plus matrix_lr=0.0475 from elite/0	b233d7b98f69	-
+exp0014	0ed4b3c	a546b54	-	0.996140	44.0	50.3	ok	mutate	WARMDOWN_RATIO 0.5 to 0.6	b233d7b98f69	-
+exp0015	0c44869	0c70db6	-	0.996328	44.0	50.3	ok	mutate	UNEMBEDDING_LR 0.004 to 0.005	b233d7b98f69	-
+exp0016	cdc0d9a	c50e49f	-	0.996289	44.0	50.3	ok	mutate	x0_lambdas init 0.1 to 0.05	b233d7b98f69	-
+exp0017	ee6dc57	a546b54	-	0.995939	44.0	50.3	ok	mutate	EMBEDDING_LR 0.6 to 0.5	b233d7b98f69	-
+exp0018	0649f68	c256980	c50e49f	0.996504	44.0	50.3	ok	crossover	small warmup 0.02 onto elite/0 (lr=0.0475)	b233d7b98f69	-
+exp0019	7c4332f	0c70db6	-	0.997496	44.0	50.3	ok	mutate	WINDOW_PATTERN SSSL to SLSL	b233d7b98f69	-
+exp0020	2f657a9	a546b54	-	0.990379	43.9	50.3	elite	mutate	TOTAL_BATCH_SIZE halved to 2**18 (262K)	b233d7b98f69	elite/0
+exp0021	e79182c	c50e49f	2f657a9	0.988036	43.9	50.3	elite	crossover	batch=2**18 onto elite/3 (lr=0.045 + warmup)	b233d7b98f69	elite/0
+exp0022	40e0861	0c70db6	-	0.989286	43.9	50.3	elite	mutate	TOTAL_BATCH_SIZE 2**18 (on lr=0.045, no warmup)	b233d7b98f69	elite/2
+exp0023	0a9f623	a546b54	40e0861	0.990597	43.9	50.3	elite	crossover	batch=2**18 onto elite/1 (lr=0.05, no warmup)	b233d7b98f69	elite/1
+exp0024	a18e5ce	e79182c	-	0.988323	43.9	50.3	elite	mutate	matrix_lr 0.0475 at batch=2**18 + warmup	b233d7b98f69	elite/3
+exp0025	d7a35ad	a18e5ce	e79182c	0.988051	43.9	50.3	elite	crossover	matrix_lr blend 0.04625 at batch=2**18+warmup	b233d7b98f69	elite/3
+exp0026	12222ad	40e0861	-	0.994657	22.2	50.3	ok	mutate	halve batch (2**17, device=64)	b233d7b98f69	-
+exp0027	41c1e5a	0a9f623	e79182c	0.989382	43.9	50.3	elite	crossover	warmup=0.05 on lr=0.05+batch=2**18	b233d7b98f69	elite/1
+exp0028	baf2e66	d7a35ad	-	0.987818	43.9	50.3	elite	mutate	matrix_lr 0.04 at batch=2**18+warmup	b233d7b98f69	elite/0
+exp0029	e45ff1a	40e0861	baf2e66	0.987893	43.9	50.3	elite	crossover	lr=0.04 onto elite/2 (no warmup, batch=2**18)	b233d7b98f69	elite/2
+exp0030	9c2cb69	41c1e5a	-	0.987495	43.9	50.3	elite	mutate	matrix_lr 0.035 at batch=2**18+warmup	b233d7b98f69	elite/0
+exp0031	bc9a56e	d7a35ad	9c2cb69	0.987913	43.9	50.3	elite	crossover	matrix_lr 0.03 extrapolation at batch=2**18+warmup	b233d7b98f69	elite/3
+exp0032	2443d63	e45ff1a	-	0.987257	66.2	85.9	elite	mutate	DEPTH 8 to 10 at batch=2**18+lr0.04	b233d7b98f69	elite/0
+exp0033	612366c	41c1e5a	2443d63	0.987406	66.2	85.9	elite	crossover	DEPTH=10 onto elite/1 (lr=0.05+warmup)	b233d7b98f69	elite/1
+exp0034	f58a279	bc9a56e	-	0.985399	66.2	85.9	elite	mutate	DEPTH 10 + lr=0.03 + warmup + batch=2**18	b233d7b98f69	elite/0
+exp0035	9194dc9	e45ff1a	f58a279	0.986029	66.2	85.9	elite	crossover	depth=10+warmup onto lr=0.04 batch=2**18	b233d7b98f69	elite/2
+exp0036	d14bb6f	612366c	-	0.985768	66.2	85.9	elite	mutate	matrix_lr 0.025 at depth=10+warmup+batch=2**18	b233d7b98f69	elite/1
+exp0037	30b0cc5	bc9a56e	9194dc9	0.985413	66.2	85.9	elite	crossover	depth=10 + lr=0.0275 + warmup + batch=2**18	b233d7b98f69	elite/3
+exp0038	96ae0f6	f58a279	-	0.986022	66.2	85.9	ok	mutate	WEIGHT_DECAY 0.1 at depth=10 regime	b233d7b98f69	-
+exp0039	3d0e472	d14bb6f	f58a279	0.985562	66.2	85.9	elite	crossover	matrix_lr 0.035 extrapolation depth=10+warmup	b233d7b98f69	elite/1
+exp0041	b3b849a	9194dc9	-	0.985837	66.2	85.9	elite	mutate	EMBEDDING_LR 0.4 at depth=10 regime	b233d7b98f69	elite/2
+exp0042	d07e930	3d0e472	f58a279	0.985189	66.2	85.9	elite	crossover	lr=0.03 transplant (config-equiv to exp0034) at depth=10+warmup	b233d7b98f69	elite/0
+exp0043	a2c5ef0	30b0cc5	-	0.985857	66.2	85.9	ok	mutate	EMBEDDING_LR 0.4 at lr=0.0275 base	b233d7b98f69	-
+exp0044	49a6e5c	b3b849a	30b0cc5	0.985558	66.2	85.9	elite	crossover	lr=0.03375+embedding=0.4 depth=10+warmup	b233d7b98f69	elite/2
+exp0045	ec2d448	d07e930	-	0.986822	66.2	85.9	ok	mutate	Muon ns_steps 5 to 4	b233d7b98f69	-
+exp0046	ce28e55	3d0e472	d07e930	0.985374	66.2	85.9	elite	crossover	literal lr=0.03 (3rd replicate of best config)	b233d7b98f69	elite/1
+exp0047	af87940	49a6e5c	-	0.985170	66.2	85.9	elite	mutate	rotary base 10000 to 50000 at depth=10 regime	b233d7b98f69	elite/2
+exp0048	ff2706b	30b0cc5	af87940	0.985859	66.2	85.9	ok	crossover	rotary base 50000 onto lr=0.0275 base	b233d7b98f69	-
+exp0049	25ad15f	ce28e55	-	0.985502	66.2	85.9	elite	mutate	ADAM_BETAS beta1 0.8 to 0.85	b233d7b98f69	elite/3
+exp0050	de36c8e	d07e930	25ad15f	0.985563	66.2	85.9	elite	crossover	beta1=0.85 transplant onto best (config-equiv exp0049)	b233d7b98f69	elite/3
+exp0051	c7a109b	af87940	-	0.991506	66.2	85.9	ok	mutate	remove logit softcap	b233d7b98f69	-
+exp0052	c549b71	ce28e55	af87940	0.985622	66.2	85.9	elite	crossover	rotary base 50000 onto clean best base	b233d7b98f69	elite/3
+exp0054	e67a5b9	c549b71	-	0.985182	66.2	85.9	elite	mutate	ve_gate_channels 32 to 64 with base=50000	b233d7b98f69	elite/3
+exp0055	673f859	ce28e55	af87940	0.985500	66.2	85.9	ok	crossover	rotary base 50000 onto best (replicate of exp0052)	b233d7b98f69	-
+exp0056	c5e5b26	d07e930	-	0.985257	66.2	85.9	ok	mutate	ve_gate_channels 32 to 64 isolated	b233d7b98f69	-
+exp0057	05460b3	e67a5b9	-	0.986790	66.2	85.9	ok	mutate	Muon momentum warmup 300 to 600	b233d7b98f69	-
+exp0058	64ee4c6	ce28e55	-	0.989492	66.2	85.9	ok	mutate	SOFTCAP 15 to 30	b233d7b98f69	-
+exp0059	6a68006	af87940	-	0.984292	66.2	85.9	elite	mutate	FINAL_LR_FRAC 0.0 to 0.05	b233d7b98f69	elite/2
+exp0060	726ef51	e67a5b9	d07e930	0.985064	66.2	85.9	elite	crossover	lr=0.03 no-op transplant (replicate exp0054)	b233d7b98f69	elite/3
+exp0061	4a30faa	ce28e55	-	0.984416	66.2	85.9	elite	mutate	FINAL_LR_FRAC 0.05 isolated on clean best	b233d7b98f69	elite/1
+exp0062	248d085	6a68006	726ef51	0.984370	66.2	85.9	elite	crossover	ve_gate=64 onto best with FINAL_LR_FRAC=0.05	b233d7b98f69	elite/0
+exp0063	ee8ee6c	726ef51	-	0.984736	66.2	85.9	elite	mutate	FINAL_LR_FRAC 0.0 to 0.1	b233d7b98f69	elite/3
+exp0064	af26d3e	4a30faa	6a68006	0.984379	66.2	85.9	elite	crossover	lr=0.03375 + FINAL_LR_FRAC=0.05 clean base	b233d7b98f69	elite/3
+exp0065	33fb206	248d085	-	0.984629	66.2	85.9	ok	mutate	FINAL_LR_FRAC 0.05 to 0.02	b233d7b98f69	-
+exp0066	412f45f	af26d3e	6a68006	0.984771	66.2	85.9	ok	crossover	embedding=0.4 onto lr=0.03375+FINAL_LR_FRAC=0.05 base=10000	b233d7b98f69	-
+exp0067	d860d53	4a30faa	-	0.985204	66.2	85.9	ok	mutate	WARMDOWN_RATIO 0.5 to 0.4 with FINAL_LR_FRAC=0.05	b233d7b98f69	-
+exp0068	13b6282	248d085	-	0.984548	66.2	85.9	ok	mutate	SCALAR_LR 0.5 to 1.0	b233d7b98f69	-
+exp0069	1cff47f	af26d3e	-	0.984767	59.9	77.7	ok	mutate	MLP factor 4x to 3x	b233d7b98f69	-
+exp0070	b83ef5e	4a30faa	-	0.985957	72.5	94.0	ok	mutate	MLP factor 4 to 5	b233d7b98f69	-
+exp0071	b4cace6	6a68006	-	0.983411	66.2	85.9	elite	mutate	x0_lambdas init 0.1 to 0.2	b233d7b98f69	elite/2
+exp0072	0f66a14	248d085	b4cace6	0.983089	66.2	85.9	elite	crossover	x0=0.2 + ve_gate=64 + best base	b233d7b98f69	elite/2
+exp0073	48a1b8f	af26d3e	-	0.985216	66.2	85.9	ok	mutate	x0_lambdas 0.3 on clean base	b233d7b98f69	-
+exp0074	44821af	4a30faa	0f66a14	0.984695	66.2	85.9	ok	crossover	x0=0.2 isolated on clean best base	b233d7b98f69	-
+exp0075	a62338a	248d085	-	0.984492	66.2	85.9	elite	mutate	x0_lambdas 0.3 on full stack	b233d7b98f69	elite/1
+exp0076	f73ceeb	af26d3e	0f66a14	0.985658	66.2	85.9	ok	crossover	x0=0.2 + ve_gate=64 onto clean base	b233d7b98f69	-
+exp0077	a54e537	a62338a	-	0.983450	66.2	85.9	elite	mutate	x0_lambdas 0.25 full stack	b233d7b98f69	elite/1
+exp0078	cc4bec2	248d085	a54e537	0.983173	66.2	85.9	elite	crossover	x0=0.175 blend full stack	b233d7b98f69	elite/0
+exp0079	8a008ff	0f66a14	-	0.983446	66.2	85.9	elite	mutate	Muon momentum warmup 300 to 200	b233d7b98f69	elite/3
+exp0080	926618c	8a008ff	0f66a14	0.983329	66.2	85.9	elite	crossover	no-op replicate of exp0079	b233d7b98f69	elite/1
+exp0081	e5bb89a	cc4bec2	-	0.984905	66.2	85.9	ok	mutate	rotary base 50000 to 10000 on full stack	b233d7b98f69	-
+exp0082	6fd09d1	926618c	0f66a14	0.983182	66.2	85.9	elite	crossover	revert Muon warmup 200 to 300 (config-equiv to best)	b233d7b98f69	elite/1
+exp0083	1cd07be	8a008ff	-	0.984093	66.2	85.9	ok	mutate	ve_gate_channels 64 to 128	b233d7b98f69	-
+exp0084	1a62f0b	cc4bec2	0f66a14	0.983063	66.2	85.9	elite	crossover	x0=0.2 transplant config-equiv to exp0072 best	b233d7b98f69	elite/0
+exp0085	db214d9	6fd09d1	-	0.983958	66.2	85.9	ok	mutate	init scale 3**0.5 to 2**0.5	b233d7b98f69	-
+exp0086	688b8b5	8a008ff	1a62f0b	0.981265	66.2	85.9	elite	crossover	revert Muon warmup 200 to 300 (4th replicate of best)	b233d7b98f69	elite/3
+exp0087	585f10b	0f66a14	-	0.983897	66.2	85.9	ok	mutate	resid_lambdas init 1.0 to 0.95	b233d7b98f69	-
+exp0088	cf55776	6fd09d1	0f66a14	0.983595	66.2	85.9	ok	crossover	no-op replicate of best (5th sample)	b233d7b98f69	-
+exp0089	672b15d	688b8b5	-	0.982996	66.2	85.9	elite	mutate	Muon beta2 0.95 to 0.85	b233d7b98f69	elite/3
+exp0090	5f1d74c	1a62f0b	672b15d	0.979142	66.2	85.9	elite	crossover	beta2=0.85 onto best (replicate of exp0089)	b233d7b98f69	elite/1
+exp0091	11b7a0c	0f66a14	-	0.984333	66.2	85.9	ok	mutate	EMBEDDING_LR 0.4 to 0.3	b233d7b98f69	-
+exp0092	49dbb6a	5f1d74c	1a62f0b	0.983448	66.2	85.9	ok	crossover	revert beta2 to 0.95 (6th replicate of best)	b233d7b98f69	-
+exp0093	ef1f859	672b15d	-	0.985301	66.2	85.9	ok	mutate	ADAM beta2 0.95 to 0.99	b233d7b98f69	-
+exp0094	4f1733d	0f66a14	-	0.985181	66.2	85.9	ok	mutate	UNEMBEDDING_LR 0.004 to 0.003	b233d7b98f69	-
+exp0095	f9a6f33	5f1d74c	-	0.983474	66.2	85.9	ok	mutate	Muon momentum start 0.85 to 0.8	b233d7b98f69	-
+exp0096	56141f2	672b15d	-	0.985727	66.2	85.9	ok	mutate	WARMUP_RATIO 0.05 to 0.1	b233d7b98f69	-
+exp0097	6495a68	1a62f0b	-	0.984831	66.2	85.9	ok	mutate	WD 0.2 to 0.3	b233d7b98f69	-
+exp0098	7a5b75d	5f1d74c	0f66a14	0.983686	66.2	85.9	ok	crossover	revert beta2 to 0.95 (7th best replicate)	b233d7b98f69	-
+exp0099	e23fbf5	672b15d	-	0.983746	60.2	80.9	ok	mutate	DEPTH 10 to 9	b233d7b98f69	-
+exp0100	f84e62a	1a62f0b	-	0.984945	66.2	85.9	ok	mutate	SCALAR_LR 0.5 to 0.3	b233d7b98f69	-
+exp0101	2a3055d	5f1d74c	-	0.984092	66.2	85.9	ok	mutate	matrix_lr 0.03375 to 0.04	b233d7b98f69	-
+exp0102	325bbc5	672b15d	-	0.983775	66.2	85.9	ok	mutate	matrix_lr 0.03375 to 0.0325	b233d7b98f69	-
