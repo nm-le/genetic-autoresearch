@@ -1,0 +1,101 @@
+exp_id	commit	parent1	parent2	val_bpb	memory_gb	params_m	status	mutation_kind	description	controller_sha	promoted_slot
+exp0001	fcc3407	-	-	0.996898	44.0	50.3	elite	baseline	unmodified baseline (depth=8, SSSL, Muon+AdamW, 50.3M params)	b233d7b98f69	elite/0
+exp0002	80d458b	fcc3407	-	1.017796	60.5	80.9	elite	mutate	DEPTH 8->9 (model_dim 512->640, params 50.3M->80.9M)	b233d7b98f69	elite/1
+exp0003	66ca8f1	80d458b	-	1.020408	60.5	80.9	elite	mutate	WARMDOWN_RATIO 0.5->0.3 from depth=9 (more time at full LR)	d650fa1fc126	elite/2
+exp0004	64f83ef	66ca8f1	-	1.012976	60.5	80.9	elite	mutate	MATRIX_LR 0.04->0.05 from depth=9+warmdown=0.3	786d99d6529e	elite/3
+exp0005	5b99afd	fcc3407	66ca8f1	0.998669	44.0	50.3	elite	crossover	crossover baseline + warmdown=0.3 idea -> depth=8 + WARMDOWN_RATIO=0.3	786d99d6529e	elite/2
+exp0006	0558e1a	fcc3407	64f83ef	0.996469	44.0	50.3	elite	crossover	crossover baseline + MATRIX_LR=0.05 idea from elite/3 -> depth=8 + MATRIX_LR=0.05	9ab45400f34e	elite/0
+exp0007	02c9a8c	0558e1a	-	0.996112	44.0	50.3	elite	mutate	MATRIX_LR 0.05 -> 0.06 (continue sweep)	9ab45400f34e	elite/0
+exp0008	6e59051	02c9a8c	80d458b	1.013826	60.5	80.9	elite	crossover	crossover elite/0 + elite/1 -> DEPTH=9 + MATRIX_LR=0.06	9ab45400f34e	elite/1
+exp0009	855fa48	02c9a8c	-	0.998492	44.0	50.3	elite	mutate	MATRIX_LR 0.06 -> 0.07	9ab45400f34e	elite/1
+exp0010	5842c72	02c9a8c	5b99afd	0.998453	44.0	50.3	elite	crossover	crossover MATRIX_LR=0.06 base + warmdown=0.3 idea -> depth=8 + MATRIX_LR=0.06 + warmdown=0.3	9ab45400f34e	elite/3
+exp0011	de61b6b	5b99afd	-	0.998501	44.0	50.3	elite	mutate	EMBEDDING_LR 0.6 -> 0.5 from elite/2 (warmdown=0.3 base)	9ab45400f34e	elite/2
+exp0012	f68eb51	855fa48	de61b6b	0.997318	44.0	50.3	elite	crossover	crossover MATRIX_LR=0.07 base + EMBEDDING_LR=0.5 idea -> depth=8 + MATRIX_LR=0.07 + EMBEDDING_LR=0.5	9ab45400f34e	elite/1
+exp0013	d46e70f	5842c72	-	0.998798	44.0	50.3	ok	mutate	EMBEDDING_LR 0.6 -> 0.5 from elite/3 (MATRIX_LR=0.06+warmdown=0.3)	9ab45400f34e	-
+exp0014	451f99b	02c9a8c	de61b6b	0.996634	44.0	50.3	elite	crossover	crossover MATRIX_LR=0.06 + EMBEDDING_LR=0.5 idea -> depth=8 + MATRIX_LR=0.06 + EMBEDDING_LR=0.5	9ab45400f34e	elite/2
+exp0015	a2abd27	f68eb51	-	0.996395	44.0	50.3	elite	mutate	MATRIX_LR 0.07 -> 0.065 from elite/1 (with EMBEDDING_LR=0.5)	9ab45400f34e	elite/1
+exp0016	d241be0	5842c72	a2abd27	0.999501	44.0	50.3	ok	crossover	crossover MATRIX_LR=0.06+warmdown=0.3 base + MATRIX_LR=0.065 idea -> warmdown=0.3 + MATRIX_LR=0.065	9ab45400f34e	-
+exp0017	c57cda9	451f99b	-	0.995722	44.0	50.3	elite	mutate	WEIGHT_DECAY 0.2 -> 0.15 from elite/2 (MATRIX_LR=0.06+EMBEDDING_LR=0.5)	9ab45400f34e	elite/0
+exp0018	b46fd70	c57cda9	5842c72	0.997648	44.0	50.3	elite	crossover	crossover new-best base + warmdown=0.3 idea -> warmdown=0.3 onto WD=0.15+EMB=0.5+MLR=0.06	9ab45400f34e	elite/3
+exp0019	b26413d	c57cda9	-	0.995604	44.0	50.3	elite	mutate	WEIGHT_DECAY 0.15 -> 0.10 (continue sweep)	9ab45400f34e	elite/0
+exp0020	99be0ce	b26413d	a2abd27	0.996065	44.0	50.3	elite	crossover	crossover WD=0.10 base + MATRIX_LR=0.065 idea -> depth=8 + MATRIX_LR=0.065 + EMB=0.5 + WD=0.10	8b2b8cb57f10	elite/3
+exp0021	12e6b55	b26413d	-	0.996339	44.0	50.3	elite	mutate	WEIGHT_DECAY 0.10 -> 0.05 (continue sweep)	8b2b8cb57f10	elite/2
+exp0022	4ac0bf1	b26413d	-	0.997229	44.0	50.3	ok	mutate	WARMUP_RATIO 0.0 -> 0.05	621eb12717df	-
+exp0023	a6ef071	99be0ce	12e6b55	0.997148	44.0	50.3	ok	crossover	crossover MATRIX_LR=0.065 base + WD=0.05 idea -> MATRIX_LR=0.065+WD=0.05+EMB=0.5	621eb12717df	-
+exp0024	d8ec132	a2abd27	-	0.996539	44.0	50.3	ok	mutate	ADAM_BETAS (0.8,0.95) -> (0.85,0.95) from elite/1	621eb12717df	-
+exp0025	c1c146d	b26413d	-	0.995688	44.0	50.3	elite	mutate	WARMDOWN_RATIO 0.5 -> 0.6 (test more warmdown)	621eb12717df	elite/1
+exp0026	47fc7d2	99be0ce	c1c146d	0.996200	44.0	50.3	ok	crossover	crossover MATRIX_LR=0.065+WD=0.10+EMB=0.5 base + warmdown=0.6 idea	621eb12717df	-
+exp0027	1bf3a3a	12e6b55	-	0.996562	44.0	50.3	ok	mutate	SCALAR_LR 0.5 -> 0.3 from elite/2	621eb12717df	-
+exp0028	91c8f93	b26413d	-	0.996639	44.0	50.3	ok	mutate	UNEMBEDDING_LR 0.004 -> 0.005 from elite/0	621eb12717df	-
+exp0029	7d603f0	c1c146d	-	0.996704	44.0	50.3	ok	mutate	WARMDOWN 0.6 -> 0.7 (continue sweep)	621eb12717df	-
+exp0030	0747415	99be0ce	-	0.989060	43.9	50.3	elite	mutate	TOTAL_BATCH_SIZE 2**19 -> 2**18 from elite/3 (more updates)	621eb12717df	elite/0
+exp0031	89c0149	0747415	12e6b55	0.988622	43.9	50.3	elite	crossover	crossover TOTAL_BATCH=2**18 base + WD=0.05 idea -> WD=0.05 helps in small batch regime	621eb12717df	elite/0
+exp0032	92164bd	89c0149	-	0.987464	43.9	50.3	elite	mutate	MATRIX_LR 0.065 -> 0.06 from elite/0 at TOTAL_BATCH=2**18	621eb12717df	elite/0
+exp0033	0b91c83	92164bd	c1c146d	0.987474	43.9	50.3	elite	crossover	crossover new-best base + warmdown=0.6 idea -> tied with parent	621eb12717df	elite/2
+exp0034	799f60f	92164bd	-	0.987300	22.2	50.3	elite	mutate	TOTAL_BATCH=2**17 + DEVICE_BATCH=64 (more updates, freed VRAM)	621eb12717df	elite/0
+exp0035	dbbdc5a	799f60f	0b91c83	0.986408	22.2	50.3	elite	crossover	crossover TOTAL_BATCH=2**17 base + warmdown=0.6 idea -> warmdown=0.6 helps at small batch	621eb12717df	elite/0
+exp0036	ac4f014	dbbdc5a	-	0.996460	11.3	50.3	ok	mutate	TOTAL_BATCH=2**16 + DEVICE_BATCH=32 (too small, regression)	621eb12717df	-
+exp0037	485d3b7	dbbdc5a	-	0.983665	30.5	80.9	elite	mutate	DEPTH 8 -> 9 at small-batch base (now works with more updates)	4d1e74ae8c7f	elite/0
+exp0038	df39ee2	485d3b7	-	0.983138	33.5	85.9	elite	mutate	DEPTH 9 -> 10 (continue depth scaling, same model_dim=640)	4d1e74ae8c7f	elite/0
+exp0039	573b900	df39ee2	-	0.984471	43.8	128.2	elite	mutate	DEPTH 10 -> 11 (model_dim 640 -> 768 jump too much)	4d1e74ae8c7f	elite/3
+exp0040	1ca18a2	df39ee2	-	0.982164	33.5	85.9	elite	mutate	MATRIX_LR 0.06 -> 0.05 at DEPTH=10 (lower LR for bigger model)	4d1e74ae8c7f	elite/0
+exp0041	bc48869	1ca18a2	573b900	0.984204	43.8	128.2	elite	crossover	crossover DEPTH=10+MATRIX_LR=0.05 base + DEPTH=11 idea -> DEPTH=11+MATRIX_LR=0.05 still worse	4d1e74ae8c7f	elite/1
+exp0042	b0d9b34	1ca18a2	-	0.981788	33.5	85.9	elite	mutate	MATRIX_LR 0.05 -> 0.045 (continue sweep at DEPTH=10)	4d1e74ae8c7f	elite/0
+exp0043	1e3e348	b0d9b34	573b900	0.984795	43.8	128.2	elite	crossover	crossover MATRIX_LR=0.045 base + DEPTH=11 -> still worse	4d1e74ae8c7f	elite/2
+exp0044	4c06e8a	b0d9b34	-	0.982519	33.5	85.9	elite	mutate	MATRIX_LR 0.045 -> 0.04 (peak at 0.045)	4d1e74ae8c7f	elite/2
+exp0045	1e854f9	b0d9b34	bc48869	0.984895	43.8	128.2	ok	crossover	crossover MATRIX_LR=0.045 base + DEPTH=11 idea (duplicate of exp0043 recipe)	4d1e74ae8c7f	-
+exp0046	2c9f05f	573b900	-	0.985106	36.7	96.0	ok	mutate	ASPECT_RATIO 64 -> 56 from elite/3 DEPTH=11 (forces model_dim=640)	4d1e74ae8c7f	-
+exp0047	ab0f688	4c06e8a	-	0.983927	33.5	85.9	elite	mutate	WD 0.05 -> 0.025 from elite/2	4d1e74ae8c7f	elite/3
+exp0048	f68c0f4	bc48869	ab0f688	0.985848	43.8	128.2	ok	crossover	crossover DEPTH=11+MATRIX_LR=0.05 + WD=0.025 idea	4d1e74ae8c7f	-
+exp0049	0f6f733	b0d9b34	-	0.981740	33.5	85.9	elite	mutate	WD 0.05 -> 0.075 from elite/0 (best base)	4d1e74ae8c7f	elite/1
+exp0050	dd34b2a	0f6f733	4c06e8a	0.982578	33.5	85.9	elite	crossover	crossover WD=0.075 + MATRIX_LR=0.04 idea	4d1e74ae8c7f	elite/3
+exp0051	277e8cc	0f6f733	-	0.990624	33.6	85.9	ok	mutate	HEAD_DIM 128 -> 64 (huge regression)	4d1e74ae8c7f	-
+exp0052	6c14198	0f6f733	-	0.981820	33.5	85.9	elite	mutate	WINDOW_PATTERN SSSL -> SSLL (more long layers)	4d1e74ae8c7f	elite/3
+exp0053	f25a057	4c06e8a	0f6f733	0.982361	33.5	85.9	elite	crossover	crossover MATRIX_LR=0.04 + WD=0.075 idea	4d1e74ae8c7f	elite/2
+exp0054	6fcd958	b0d9b34	-	0.981890	33.5	85.9	elite	mutate	ADAM_BETAS (0.8,0.95) -> (0.85,0.95) at best base	4d1e74ae8c7f	elite/2
+exp0055	29accde	6c14198	6fcd958	0.982582	33.5	85.9	ok	crossover	crossover WINDOW=SSLL + ADAM_BETAS=(0.85,0.95)	4d1e74ae8c7f	-
+exp0056	bd18b4c	0f6f733	-	0.982210	39.9	114.8	ok	mutate	ASPECT_RATIO 64 -> 72 from elite/1 (wider model)	4d1e74ae8c7f	-
+exp0057	5922309	b0d9b34	-	0.984889	33.5	85.9	ok	mutate	Muon momentum constant 0.95 (skip warmup)	4d1e74ae8c7f	-
+exp0058	c12f27c	6c14198	-	0.982619	33.5	85.9	ok	mutate	WD 0.075 -> 0.10 from elite/3	4d1e74ae8c7f	-
+exp0059	624103b	6fcd958	-	0.982656	33.5	85.9	ok	mutate	ADAM_BETAS (0.85,0.95) -> (0.85,0.99)	4d1e74ae8c7f	-
+exp0060	9bbab3f	b0d9b34	-	0.981421	33.5	85.9	elite	mutate	softcap 15 -> 10 (tighter logit clipping)	4d1e74ae8c7f	elite/1
+exp0061	63a964d	9bbab3f	6c14198	0.982486	33.5	85.9	ok	crossover	crossover softcap=10 + WINDOW=SSLL	4d1e74ae8c7f	-
+exp0062	d42602e	9bbab3f	-	0.988125	33.5	85.9	ok	mutate	softcap 10 -> 7 (too tight)	4d1e74ae8c7f	-
+exp0063	4501fe6	9bbab3f	-	0.982005	33.5	85.9	ok	mutate	softcap 10 -> 12	4d1e74ae8c7f	-
+exp0064	ddba6fc	6fcd958	-	0.985098	33.5	85.9	ok	mutate	ADAM_BETAS to (0.9, 0.95) from elite/2	4d1e74ae8c7f	-
+exp0065	307cfd2	b0d9b34	-	0.981051	33.5	85.9	elite	mutate	MATRIX_LR 0.045 -> 0.0425 (peak)	4d1e74ae8c7f	elite/1
+exp0066	fbd9536	307cfd2	6c14198	0.981525	33.5	85.9	elite	crossover	crossover MATRIX_LR=0.0425 + WINDOW=SSLL	4d1e74ae8c7f	elite/2
+exp0067	3e19652	307cfd2	-	0.982733	33.5	85.9	ok	mutate	softcap 15 -> 10 at MATRIX_LR=0.0425 (anti-synergy)	4d1e74ae8c7f	-
+exp0068	6163970	307cfd2	-	0.980897	33.5	85.9	elite	mutate	WD 0.05 -> 0.04 at MATRIX_LR=0.0425 best	4d1e74ae8c7f	elite/1
+exp0069	31723cd	6163970	6c14198	0.981799	33.5	85.9	elite	crossover	crossover SSLL onto best	4d1e74ae8c7f	elite/3
+exp0070	7d95a12	6163970	-	0.984285	33.5	85.9	ok	mutate	WD 0.04 -> 0.03 (too low)	4d1e74ae8c7f	-
+exp0071	26c61be	6163970	fbd9536	0.981389	33.5	85.9	elite	crossover	crossover SSLL onto best (variant)	4d1e74ae8c7f	elite/3
+exp0072	16e4932	b0d9b34	-	0.982048	33.5	85.9	ok	mutate	EMBEDDING_LR 0.5 -> 0.45 from elite/0	4d1e74ae8c7f	-
+exp0073	b26c8b9	26c61be	-	0.981391	33.5	85.9	elite	mutate	WD 0.04 -> 0.045 from elite/3	4d1e74ae8c7f	elite/0
+exp0074	1418955	6163970	-	0.979662	33.5	85.9	elite	mutate	x0_lambdas init 0.1 -> 0.05	4d1e74ae8c7f	elite/1
+exp0075	940e189	1418955	fbd9536	0.980292	33.5	85.9	elite	crossover	crossover SSLL onto x0_lambdas=0.05 best	4d1e74ae8c7f	elite/2
+exp0076	3c674be	1418955	-	0.980238	33.5	85.9	elite	mutate	x0_lambdas 0.05 -> 0.025 (too low)	4d1e74ae8c7f	elite/0
+exp0077	c4a8c32	1418955	26c61be	0.980324	33.5	85.9	elite	crossover	crossover SSLL onto x0_lambdas=0.05 best (variant)	4d1e74ae8c7f	elite/3
+exp0078	5342b14	940e189	-	0.979143	33.5	85.9	elite	mutate	rotary base 10000 -> 50000 from elite/2	4d1e74ae8c7f	elite/1
+exp0079	5ead9a9	5342b14	c4a8c32	0.979132	33.5	85.9	elite	crossover	crossover SSLL no-op (both have SSLL)	4d1e74ae8c7f	elite/3
+exp0080	7119ff7	5ead9a9	-	0.979582	33.5	85.9	elite	mutate	rotary 50000 -> 100000 (too high)	4d1e74ae8c7f	elite/2
+exp0081	6def24b	5ead9a9	3c674be	0.979590	33.5	85.9	elite	crossover	crossover x0_lambdas=0.025 onto best	4d1e74ae8c7f	elite/0
+exp0082	ec5c0b7	5ead9a9	-	0.978443	33.5	85.9	elite	mutate	rotary 50000 -> 30000	4d1e74ae8c7f	elite/3
+exp0083	769d243	ec5c0b7	6def24b	0.978827	33.5	85.9	elite	crossover	crossover x0_lambdas=0.025 onto rotary=30000 best	4d1e74ae8c7f	elite/0
+exp0084	3a19617	ec5c0b7	-	0.979082	33.5	85.9	elite	mutate	rotary 30000 -> 20000 (too low)	4d1e74ae8c7f	elite/2
+exp0085	75b6533	ec5c0b7	-	0.977900	33.5	85.9	elite	mutate	WINDOW SSLL -> SSSL (combine with rotary=30000)	4d1e74ae8c7f	elite/3
+exp0086	634f810	75b6533	769d243	0.978618	33.5	85.9	elite	crossover	crossover x0_lambdas=0.025 onto new best	4d1e74ae8c7f	elite/1
+exp0087	8f6e7d7	75b6533	-	0.979471	33.5	85.9	ok	mutate	rotary 30000 -> 25000 (worse)	4d1e74ae8c7f	-
+exp0088	33420fe	75b6533	3a19617	0.978825	33.5	85.9	elite	crossover	crossover rotary=20000 onto SSSL+best	4d1e74ae8c7f	elite/2
+exp0089	91ac07c	634f810	-	0.978235	33.5	85.9	elite	mutate	MATRIX_LR 0.0425 -> 0.05	4d1e74ae8c7f	elite/1
+exp0090	e7b7989	769d243	75b6533	0.978866	33.5	85.9	ok	crossover	crossover SSSL onto rotary=30000+x0=0.025	4d1e74ae8c7f	-
+exp0091	2999c13	33420fe	-	0.978889	33.5	85.9	ok	mutate	MATRIX_LR 0.0425 -> 0.04 from elite/2	4d1e74ae8c7f	-
+exp0092	e433282	91ac07c	-	0.977600	33.5	85.9	elite	mutate	x0_lambdas 0.025 -> 0.05 (combine MATRIX_LR=0.05 with x0=0.05)	4d1e74ae8c7f	elite/3
+exp0093	d7c3e86	e433282	33420fe	0.979621	33.5	85.9	ok	crossover	rotary=20000 onto new best	4d1e74ae8c7f	-
+exp0094	46b1947	e433282	-	0.979001	33.5	85.9	ok	mutate	MATRIX_LR 0.05 -> 0.055 (too high)	4d1e74ae8c7f	-
+exp0095	b3e1119	e433282	-	0.982098	33.5	85.9	ok	mutate	x0 0.05 -> 0.075 (too high)	4d1e74ae8c7f	-
+exp0096	cea3708	769d243	-	0.979142	33.5	85.9	ok	mutate	EMB_LR 0.5 -> 0.55	4d1e74ae8c7f	-
+exp0097	fded898	91ac07c	-	0.977941	33.5	85.9	elite	mutate	WD 0.04 -> 0.05 from elite/1	4d1e74ae8c7f	elite/1
+exp0098	bcac49b	33420fe	e433282	0.978915	33.5	85.9	elite	crossover	no-op crossover (both have x0=0.05)	4d1e74ae8c7f	elite/0
+exp0099	1cc15d7	fded898	-	0.976583	33.5	85.9	elite	mutate	x0 0.025 -> 0.05 with WD=0.05	4d1e74ae8c7f	elite/1
+exp0100	b707018	1cc15d7	33420fe	0.979447	33.5	85.9	ok	crossover	rotary=20000 onto new best	4d1e74ae8c7f	-

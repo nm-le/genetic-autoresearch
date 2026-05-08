@@ -1,0 +1,5 @@
+slot	tag	commit	val_bpb	memory_gb	params_m	role	parent1	parent2	mutation_kind	description	controller_sha	expansions	mean_child_gain	last_used_exp	last_improved_exp
+0	elite/0	dc4e754	0.976124	33.5	85.9	best	c1b3f80	02a3bc8	crossover	ADAM_BETAS 0.85 onto best (MATRIX_LR=0.0475+WD=0.045)	b564149f7114	4	-0.000329	exp0123	exp0116
+1	elite/1	481c619	0.976427	33.5	85.9	lean	57d789e	3d2dab2	crossover	beta2=0.98 + WD=0.05	b564149f7114	0	0.000000	exp0125	exp0125
+2	elite/2	c1b3f80	0.976142	33.5	85.9	best	6882675	b792213	crossover	elite/1+elite/3 crossover (WD 0.045 transplant) = elite/2 config	b564149f7114	6	-0.001090	exp0124	exp0110
+3	elite/3	3d2dab2	0.976197	33.5	85.9	lean	c1b3f80	-	mutate	WD 0.045 -> 0.05 on best	b564149f7114	1	-0.000037	exp0125	exp0124
