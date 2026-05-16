@@ -1,4 +1,4 @@
-# GEAR 🧬: Genetic AutoResearch for Agentic Code Evolution
+# GEAR ⚙️: Genetic AutoResearch for Agentic Code Evolution
 
 [![arXiv](https://img.shields.io/badge/arXiv-2605.13874-b31b1b.svg)](https://arxiv.org/abs/2605.13874)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://genetic-autoresearch.github.io/)
@@ -6,7 +6,7 @@
 > **GEAR** is a drop-in genetic search controller for [AutoResearch](https://github.com/karpathy/autoresearch)-style systems. It replaces single-incumbent hill climbing with a population-based frontier search over research states — maintaining multiple elite directions, recombining complementary ideas via crossover, and continuing to find improvements long after greedy search plateaus.
 
 <p align="center">
-  <img src="progress.png" width="700" alt="Running best validation bpb for Baseline vs GEAR variants over 100 experiments"/>
+  <img src="progress_compare.png" width="700" alt="Running best validation bpb for Baseline vs GEAR variants over 100 experiments"/>
 </p>
 
 All three GEAR variants outperform the AutoResearch baseline under identical compute budgets (100 experiments, 5 min each on a single H100). The baseline stops improving after ~50 experiments; GEAR variants keep going.
