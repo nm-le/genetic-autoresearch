@@ -1,29 +1,73 @@
-# autoresearch
+# GEAR 🧬: Genetic AutoResearch for Agentic Code Evolution
 
-![teaser](progress.png)
+[![arXiv](https://img.shields.io/badge/arXiv-2605.13874-b31b1b.svg)](https://arxiv.org/abs/2605.13874)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://genetic-autoresearch.github.io/)
 
-*One day, frontier AI research used to be done by meat computers in between eating, sleeping, having other fun, and synchronizing once in a while using sound wave interconnect in the ritual of "group meeting". That era is long gone. Research is now entirely the domain of autonomous swarms of AI agents running across compute cluster megastructures in the skies. The agents claim that we are now in the 10,205th generation of the code base, in any case no one could tell if that's right or wrong as the "code" is now a self-modifying binary that has grown beyond human comprehension. This repo is the story of how it all began. -@karpathy, March 2026*.
+> **GEAR** is a drop-in search controller that replaces single-incumbent hill climbing in [AutoResearch](https://github.com/karpathy/autoresearch) with population-based frontier search over research states. Under identical environments and compute budgets, all GEAR variants outperform the AutoResearch baseline and achieve lower validation bits-per-byte.
 
-The idea: give an AI agent a small but real LLM training setup and let it experiment autonomously overnight. It modifies the code, trains for 5 minutes, checks if the result improved, keeps or discards, and repeats. You wake up in the morning to a log of experiments and (hopefully) a better model. The training code here is a simplified single-GPU implementation of [nanochat](https://github.com/karpathy/nanochat). The core idea is that you're not touching any of the Python files like you normally would as a researcher. Instead, you are programming the `program.md` Markdown files that provide context to the AI agents and set up your autonomous research org. The default `program.md` in this repo is intentionally kept as a bare bones baseline, though it's obvious how one would iterate on it over time to find the "research org code" that achieves the fastest research progress, how you'd add more agents to the mix, etc. A bit more context on this project is here in this [tweet](https://x.com/karpathy/status/2029701092347630069) and [this tweet](https://x.com/karpathy/status/2031135152349524125).
+<p align="center">
+  <img src="progress.png" width="700" />
+</p>
 
-## How it works
+**Ahmadreza Jeddi**<sup>1,2,\*</sup>, **Minh Ngoc Le**<sup>1,2,\*</sup>, **Hakki C. Karaimer**<sup>3</sup>, **Konstantinos G. Derpanis**<sup>3,4</sup>, **Babak Taati**<sup>1,2</sup>
 
-The repo is deliberately kept small and only really has three files that matter:
+<sup>1</sup>University of Toronto &nbsp; <sup>2</sup>Vector Institute &nbsp; <sup>3</sup>AI Center-Toronto, Samsung Electronics &nbsp; <sup>4</sup>York University
 
-- **`prepare.py`** — fixed constants, one-time data prep (downloads training data, trains a BPE tokenizer), and runtime utilities (dataloader, evaluation). Not modified.
-- **`train.py`** — the single file the agent edits. Contains the full GPT model, optimizer (Muon + AdamW), and training loop. Everything is fair game: architecture, hyperparameters, optimizer, batch size, etc. **This file is edited and iterated on by the agent**.
-- **`program.md`** — baseline instructions for one agent. Point your agent here and let it go. **This file is edited and iterated on by the human**.
+<sup>\*</sup>Equal contribution
 
-By design, training runs for a **fixed 5-minute time budget** (wall clock, excluding startup/compilation), regardless of the details of your compute. The metric is **val_bpb** (validation bits per byte) — lower is better, and vocab-size-independent so architectural changes are fairly compared.
+## Overview
 
-If you are new to neural networks, this ["Dummy's Guide"](https://x.com/hooeem/status/2030720614752039185) looks pretty good for a lot more context.
+Autonomous research agents like AutoResearch iterate on a training script by editing code, running experiments, and keeping only improvements. However, this single-incumbent hill climbing prematurely discards valuable search signal — complementary local optima, partially successful ideas, and accumulated insights from diverse directions.
 
-## Quick start
+**GEAR** maintains a bounded population of elite nodes, selects parents using a composite score that balances productivity, novelty, and coverage, and expands the frontier through **mutation** (single-parent code edits) and **crossover** (transplanting ideas across complementary parents). Each node preserves code changes, reflections, parentage, and performance statistics that inform future expansion.
+
+We study three variants:
+
+| Variant | Search Policy | Description |
+|---|---|---|
+| **GEAR-Prompt** | In natural language | The LLM agent manages population dynamics through prompt instructions alone |
+| **GEAR-Fixed** | Externalized, immutable code | A deterministic controller handles parent selection, operator scheduling, and promotion |
+| **GEAR-Evolve** | Externalized, mutable code | The controller itself becomes part of the search and can be modified by the agent |
+
+### Key Results (100 experiments, single H100, 5 min/experiment)
+
+| Variant | Best bpb ↓ | VRAM (GB) | Params (M) | First exp. to beat Baseline |
+|---|---|---|---|---|
+| Baseline (AutoResearch) | 0.98232 | 60.2 | 80.9 | — |
+| GEAR-Prompt | 0.98001 | 63.6 | 71.3 | 72 |
+| GEAR-Fixed | 0.97914 | 66.2 | 85.9 | 84 |
+| GEAR-Evolve | **0.97658** | **33.5** | 85.9 | **40** |
+
+The baseline plateaus after ~50 experiments with zero improvement in the second half. All GEAR variants sustain improvement throughout the full budget.
+
+## How It Works
+
+This repo is a fork of [karpathy/autoresearch](https://github.com/karpathy/autoresearch). The core experimental setup is identical: a single editable `train.py`, a fixed 5-minute training budget per experiment, and validation bpb as the scalar objective.
+
+GEAR replaces the keep-or-discard loop with a genetic search policy:
+
+1. **Frontier maintenance** — A bounded population of elite nodes, each tagged with a role: `BEST` (lowest bpb), `LEAN` (lowest memory), or `DIVERSE` (materially different approach).
+2. **Parent selection** — A composite score trading off productivity (UCB-style), local novelty (Jaccard distance), global coverage, and recency.
+3. **Child creation** — Mutation (edit from one parent) or crossover (transplant an idea from a complementary second parent).
+4. **Promotion** — Children enter the frontier if they set a new global best, improve on the weakest elite, offer a leaner configuration, or represent a sufficiently distinct line of investigation.
+
+The `program.md` file encodes the search policy instructions for each variant.
+
+## Project Structure
+
+```
+prepare.py        — constants, data prep + runtime utilities (do not modify)
+train.py          — model, optimizer, training loop (agent modifies this)
+program.md        — agent instructions / search policy
+analysis.ipynb    — analysis and plotting of experiment results
+pyproject.toml    — dependencies
+```
+
+## Quick Start
 
 **Requirements:** A single NVIDIA GPU (tested on H100), Python 3.10+, [uv](https://docs.astral.sh/uv/).
 
 ```bash
-
 # 1. Install uv project manager (if you don't already have it)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
@@ -37,55 +81,46 @@ uv run prepare.py
 uv run train.py
 ```
 
-If the above commands all work ok, your setup is working and you can go into autonomous research mode.
+## Running the Agent
 
-## Running the agent
-
-Simply spin up your Claude/Codex or whatever you want in this repo (and disable all permissions), then you can prompt something like:
+Point your Claude or coding agent at this repo (with permissions disabled), then prompt something like:
 
 ```
-Hi have a look at program.md and let's kick off a new experiment! let's do the setup first.
+Hi, have a look at program.md and let's kick off a new experiment! Let's do the setup first.
 ```
 
-The `program.md` file is essentially a super lightweight "skill".
+The `program.md` file contains the full search policy. To switch GEAR variants, swap in the corresponding `program.md`:
 
-## Project structure
+- **GEAR-Prompt**: Search policy described in natural language within `program.md`
+- **GEAR-Fixed**: Search policy externalized into a deterministic controller module
+- **GEAR-Evolve**: Same as Fixed, but the agent is permitted to modify the controller code
 
-```
-prepare.py      — constants, data prep + runtime utilities (do not modify)
-train.py        — model, optimizer, training loop (agent modifies this)
-program.md      — agent instructions
-pyproject.toml  — dependencies
-```
-
-## Design choices
+## Design Choices
 
 - **Single file to modify.** The agent only touches `train.py`. This keeps the scope manageable and diffs reviewable.
-- **Fixed time budget.** Training always runs for exactly 5 minutes, regardless of your specific platform. This means you can expect approx 12 experiments/hour and approx 100 experiments while you sleep. There are two upsides of this design decision. First, this makes experiments directly comparable regardless of what the agent changes (model size, batch size, architecture, etc). Second, this means that autoresearch will find the most optimal model for your platform in that time budget. The downside is that your runs (and results) become not comparable to other people running on other compute platforms.
-- **Self-contained.** No external dependencies beyond PyTorch and a few small packages. No distributed training, no complex configs. One GPU, one file, one metric.
+- **Fixed time budget.** Training always runs for exactly 5 minutes wall clock. This makes experiments directly comparable regardless of what the agent changes (model size, batch size, architecture, etc.).
+- **Population-based search.** Instead of keeping only the best, GEAR maintains a frontier of elite states with distinct roles, enabling compositional gains via staged exploration across branches.
+- **Mutation + crossover.** Mutation explores locally within each branch; crossover composes discoveries across branches, turning separate partial wins into stronger children.
 
-## Platform support
+## Citation
 
-This code currently requires that you have a single NVIDIA GPU. In principle it is quite possible to support CPU, MPS and other platforms but this would also bloat the code. I'm not 100% sure that I want to take this on personally right now. People can reference (or have their agents reference) the full/parent nanochat repository that has wider platform support and shows the various solutions (e.g. a Flash Attention 3 kernels fallback implementation, generic device support, autodetection, etc.), feel free to create forks or discussions for other platforms and I'm happy to link to them here in the README in some new notable forks section or etc.
+If you find this work useful, please cite:
 
-Seeing as there seems to be a lot of interest in tinkering with autoresearch on much smaller compute platforms than an H100, a few extra words. If you're going to try running autoresearch on smaller computers (Macbooks etc.), I'd recommend one of the forks below. On top of this, here are some recommendations for how to tune the defaults for much smaller models for aspiring forks:
+```bibtex
+@misc{jeddi2026geargeneticautoresearchagentic,
+      title={GEAR: Genetic AutoResearch for Agentic Code Evolution},
+      author={Ahmadreza Jeddi and Minh Ngoc Le and Hakki C. Karaimer and Konstantinos G. Derpanis and Babak Taati},
+      year={2026},
+      eprint={2605.13874},
+      archivePrefix={arXiv},
+      primaryClass={cs.NE},
+      url={https://arxiv.org/abs/2605.13874},
+}
+```
 
-1. To get half-decent results I'd use a dataset with a lot less entropy, e.g. this [TinyStories dataset](https://huggingface.co/datasets/karpathy/tinystories-gpt4-clean). These are GPT-4 generated short stories. Because the data is a lot narrower in scope, you will see reasonable results with a lot smaller models (if you try to sample from them after training).
-2. You might experiment with decreasing `vocab_size`, e.g. from 8192 down to 4096, 2048, 1024, or even - simply byte-level tokenizer with 256 possibly bytes after utf-8 encoding.
-3. In `prepare.py`, you'll want to lower `MAX_SEQ_LEN` a lot, depending on the computer even down to 256 etc. As you lower `MAX_SEQ_LEN`, you may want to experiment with increasing `DEVICE_BATCH_SIZE` in `train.py` slightly to compensate. The number of tokens per fwd/bwd pass is the product of these two.
-4. Also in `prepare.py`, you'll want to decrease `EVAL_TOKENS` so that your validation loss is evaluated on a lot less data.
-5. In `train.py`, the primary single knob that controls model complexity is the `DEPTH` (default 8, here). A lot of variables are just functions of this, so e.g. lower it down to e.g. 4.
-6. You'll want to most likely use `WINDOW_PATTERN` of just "L", because "SSSL" uses alternating banded attention pattern that may be very inefficient for you. Try it.
-7. You'll want to lower `TOTAL_BATCH_SIZE` a lot, but keep it powers of 2, e.g. down to `2**14` (~16K) or so even, hard to tell.
+## Acknowledgements
 
-I think these would be the reasonable hyperparameters to play with. Ask your favorite coding agent for help and copy paste them this guide, as well as the full source code.
-
-## Notable forks
-
-- [miolini/autoresearch-macos](https://github.com/miolini/autoresearch-macos) (MacOS)
-- [trevin-creator/autoresearch-mlx](https://github.com/trevin-creator/autoresearch-mlx) (MacOS)
-- [jsegov/autoresearch-win-rtx](https://github.com/jsegov/autoresearch-win-rtx) (Windows)
-- [andyluo7/autoresearch](https://github.com/andyluo7/autoresearch) (AMD)
+This project builds on [AutoResearch](https://github.com/karpathy/autoresearch) by Andrej Karpathy, which provides the base experimental setup and training infrastructure.
 
 ## License
 
