@@ -3,33 +3,13 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2605.13874-b31b1b.svg)](https://arxiv.org/abs/2605.13874)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://genetic-autoresearch.github.io/)
 
-> **GEAR** is a drop-in search controller that replaces single-incumbent hill climbing in [AutoResearch](https://github.com/karpathy/autoresearch) with population-based frontier search over research states. Under identical environments and compute budgets, all GEAR variants outperform the AutoResearch baseline and achieve lower validation bits-per-byte.
+> **GEAR** is a drop-in genetic search controller for [AutoResearch](https://github.com/karpathy/autoresearch)-style systems. It replaces single-incumbent hill climbing with a population-based frontier search over research states — maintaining multiple elite directions, recombining complementary ideas via crossover, and continuing to find improvements long after greedy search plateaus.
 
 <p align="center">
-  <img src="progress.png" width="700" />
+  <img src="progress.png" width="700" alt="Running best validation bpb for Baseline vs GEAR variants over 100 experiments"/>
 </p>
 
-**Ahmadreza Jeddi**<sup>1,2,\*</sup>, **Minh Ngoc Le**<sup>1,2,\*</sup>, **Hakki C. Karaimer**<sup>3</sup>, **Konstantinos G. Derpanis**<sup>3,4</sup>, **Babak Taati**<sup>1,2</sup>
-
-<sup>1</sup>University of Toronto &nbsp; <sup>2</sup>Vector Institute &nbsp; <sup>3</sup>AI Center-Toronto, Samsung Electronics &nbsp; <sup>4</sup>York University
-
-<sup>\*</sup>Equal contribution
-
-## Overview
-
-Autonomous research agents like AutoResearch iterate on a training script by editing code, running experiments, and keeping only improvements. However, this single-incumbent hill climbing prematurely discards valuable search signal — complementary local optima, partially successful ideas, and accumulated insights from diverse directions.
-
-**GEAR** maintains a bounded population of elite nodes, selects parents using a composite score that balances productivity, novelty, and coverage, and expands the frontier through **mutation** (single-parent code edits) and **crossover** (transplanting ideas across complementary parents). Each node preserves code changes, reflections, parentage, and performance statistics that inform future expansion.
-
-We study three variants:
-
-| Variant | Search Policy | Description |
-|---|---|---|
-| **GEAR-Prompt** | In natural language | The LLM agent manages population dynamics through prompt instructions alone |
-| **GEAR-Fixed** | Externalized, immutable code | A deterministic controller handles parent selection, operator scheduling, and promotion |
-| **GEAR-Evolve** | Externalized, mutable code | The controller itself becomes part of the search and can be modified by the agent |
-
-### Key Results (100 experiments, single H100, 5 min/experiment)
+All three GEAR variants outperform the AutoResearch baseline under identical compute budgets (100 experiments, 5 min each on a single H100). The baseline stops improving after ~50 experiments; GEAR variants keep going.
 
 | Variant | Best bpb ↓ | VRAM (GB) | Params (M) | First exp. to beat Baseline |
 |---|---|---|---|---|
@@ -38,73 +18,74 @@ We study three variants:
 | GEAR-Fixed | 0.97914 | 66.2 | 85.9 | 84 |
 | GEAR-Evolve | **0.97658** | **33.5** | 85.9 | **40** |
 
-The baseline plateaus after ~50 experiments with zero improvement in the second half. All GEAR variants sustain improvement throughout the full budget.
+## How it works
 
-## How It Works
+GEAR maintains a bounded frontier of elite nodes, each storing a code commit, measured metrics, parentage, and productivity statistics. At each step, the agent:
 
-This repo is a fork of [karpathy/autoresearch](https://github.com/karpathy/autoresearch). The core experimental setup is identical: a single editable `train.py`, a fixed 5-minute training budget per experiment, and validation bpb as the scalar objective.
+1. **Selects a parent** from the frontier, balancing productivity, novelty, coverage, and recency
+2. **Spawns a child** via mutation (edit from one parent) or crossover (transplant an idea from a complementary second parent)
+3. **Runs the experiment** under the fixed 5-minute training budget
+4. **Promotes or discards** the child based on whether it earns a frontier slot (BEST, LEAN, or DIVERSE)
 
-GEAR replaces the keep-or-discard loop with a genetic search policy:
+The frontier preserves partially successful ideas and complementary directions that a single-incumbent system would throw away.
 
-1. **Frontier maintenance** — A bounded population of elite nodes, each tagged with a role: `BEST` (lowest bpb), `LEAN` (lowest memory), or `DIVERSE` (materially different approach).
-2. **Parent selection** — A composite score trading off productivity (UCB-style), local novelty (Jaccard distance), global coverage, and recency.
-3. **Child creation** — Mutation (edit from one parent) or crossover (transplant an idea from a complementary second parent).
-4. **Promotion** — Children enter the frontier if they set a new global best, improve on the weakest elite, offer a leaner configuration, or represent a sufficiently distinct line of investigation.
+## Three variants
 
-The `program.md` file encodes the search policy instructions for each variant.
+Each variant shares the same experimental setup (identical to AutoResearch) but differs in how the genetic search policy is implemented:
 
-## Project Structure
+| Variant | Branch | Search policy lives in... | Description |
+|---|---|---|---|
+| **GEAR-Prompt** | [`gear-prompt`](../../tree/gear-prompt) | Natural language instructions | The agent interprets population dynamics, parent selection, and promotion rules from prose in `program.md`. |
+| **GEAR-Fixed** | [`gear-fixed`](../../tree/gear-fixed) | A fixed programmatic controller | Parent selection (UCB-style composite scoring), operator scheduling, and promotion are externalized into deterministic code the agent cannot modify. |
+| **GEAR-Evolve** | [`gear-evolve`](../../tree/gear-evolve) | A mutable programmatic controller | Same as Fixed, but the agent can edit the controller itself — repairing failure modes and evolving the search policy over time. |
 
-```
-prepare.py        — constants, data prep + runtime utilities (do not modify)
-train.py          — model, optimizer, training loop (agent modifies this)
-program.md        — agent instructions / search policy
-analysis.ipynb    — analysis and plotting of experiment results
-pyproject.toml    — dependencies
-```
+Each branch has its own README with variant-specific setup instructions and `program.md`.
 
-## Quick Start
+## Quick start
 
-**Requirements:** A single NVIDIA GPU (tested on H100), Python 3.10+, [uv](https://docs.astral.sh/uv/).
+**Requirements:** Single NVIDIA GPU (tested on H100), Python 3.10+, [uv](https://docs.astral.sh/uv/).
 
 ```bash
-# 1. Install uv project manager (if you don't already have it)
-curl -LsSf https://astral.sh/uv/install.sh | sh
+# Clone and switch to the variant you want to run
+git clone https://github.com/nm-le/genetic-autoresearch.git
+cd genetic-autoresearch
+git checkout gear-evolve  # or gear-prompt, gear-fixed
 
-# 2. Install dependencies
+# Install dependencies
 uv sync
 
-# 3. Download data and train tokenizer (one-time, ~2 min)
+# One-time data prep (~2 min)
 uv run prepare.py
 
-# 4. Manually run a single training experiment (~5 min)
+# (Optional) Verify with a manual training run (~5 min)
 uv run train.py
 ```
 
-## Running the Agent
-
-Point your Claude or coding agent at this repo (with permissions disabled), then prompt something like:
+Then point your agent (Claude, Codex, etc.) at `program.md` and let it go:
 
 ```
 Hi, have a look at program.md and let's kick off a new experiment! Let's do the setup first.
 ```
 
-The `program.md` file contains the full search policy. To switch GEAR variants, swap in the corresponding `program.md`:
+See each branch's README for variant-specific details.
 
-- **GEAR-Prompt**: Search policy described in natural language within `program.md`
-- **GEAR-Fixed**: Search policy externalized into a deterministic controller module
-- **GEAR-Evolve**: Same as Fixed, but the agent is permitted to modify the controller code
+## Project structure
 
-## Design Choices
+```
+prepare.py       — constants, data prep, runtime utilities (do not modify)
+train.py         — model, optimizer, training loop (agent modifies this)
+program.md       — agent instructions & search policy (variant-specific)
+analysis.ipynb   — experiment analysis and plotting
+pyproject.toml   — dependencies
+```
 
-- **Single file to modify.** The agent only touches `train.py`. This keeps the scope manageable and diffs reviewable.
-- **Fixed time budget.** Training always runs for exactly 5 minutes wall clock. This makes experiments directly comparable regardless of what the agent changes (model size, batch size, architecture, etc.).
-- **Population-based search.** Instead of keeping only the best, GEAR maintains a frontier of elite states with distinct roles, enabling compositional gains via staged exploration across branches.
-- **Mutation + crossover.** Mutation explores locally within each branch; crossover composes discoveries across branches, turning separate partial wins into stronger children.
+## Key design choices
+
+- **Same environment as AutoResearch.** Fixed 5-minute training budget, same data pipeline/tokenizer/evaluator, same `train.py` starting point. GEAR only changes the outer search loop.
+- **Drop-in replacement.** No changes to the training harness or evaluation. Swap `program.md` (and the controller, for Fixed/Evolve) and everything else stays the same.
+- **Population size P=4.** The frontier is deliberately small — enough to maintain distinct research directions (BEST, LEAN, DIVERSE) without diluting compute across too many branches.
 
 ## Citation
-
-If you find this work useful, please cite:
 
 ```bibtex
 @misc{jeddi2026geargeneticautoresearchagentic,
@@ -120,7 +101,7 @@ If you find this work useful, please cite:
 
 ## Acknowledgements
 
-This project builds on [AutoResearch](https://github.com/karpathy/autoresearch) by Andrej Karpathy, which provides the base experimental setup and training infrastructure.
+GEAR builds on [AutoResearch](https://github.com/karpathy/autoresearch) by Andrej Karpathy. The training code is a single-GPU implementation of [nanochat](https://github.com/karpathy/nanochat).
 
 ## License
 
