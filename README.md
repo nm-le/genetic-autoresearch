@@ -88,7 +88,7 @@ pyproject.toml   — dependencies
 ## Citation
 
 ```bibtex
-@misc{jeddi2026geargeneticautoresearchagentic,
+@misc{jeddi2026geneticautoresearch,
       title={GEAR: Genetic AutoResearch for Agentic Code Evolution},
       author={Ahmadreza Jeddi and Minh Ngoc Le and Hakki C. Karaimer and Konstantinos G. Derpanis and Babak Taati},
       year={2026},
